@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
+/* CSS RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  font-family: 'Sora', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 24px;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  margin: 0px;
+  background-color: var(--primary-blue);
+}
+
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+:target {
+  scroll-margin-block: 5ex;
+}
+
+.logo {
+  width: 30vw;
+  min-width: 200px;
+  max-width: 366px;
+  height: auto;
+}
+
+/* VARIABLES */
+:root {
+  --primary-blue: #02274f;
+  --text-white: #f3f8f9;
+  --text-orange: #f56f51;
+}
+
+/* NAV */
+header {
+  color: var(--text-white);
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 20;
+  flex-direction: column-reverse;
+  position: relative;
+}
+
+.nav-links {
+  display: none;
+}
+
+.nav-links li {
+  display: inline-block;
+}
+
+.nav-links a {
+  color: var(--text-white);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--text-orange);
+}
+
+.mobile-menu-icon {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.mobile-menu-icon:hover {
+  transform: scale(1.1);
+}
+
+.mobile-menu-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.logo {
+  align-self: center;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+  }
+
+  .nav-links a {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 0;
+    color: #89bbff;
+  }
+
+  .mobile-menu-icon {
+    display: none;
+  }
+
+  .logo {
+    margin-top: 0;
+  }
+
+  main .video {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* MOBILE NAVIGATION */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--primary-blue);
+  color: var(--text-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  text-align: center;
+}
+
+.mobile-nav.active {
+  right: 0;
+}
+
+.mobile-nav .close-icon {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 40px;
+  cursor: pointer;
+  color: var(--text-white);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.mobile-nav img {
+  width: 250px;
+  margin-bottom: 60px;
+}
+
+.mobile-nav a {
+  display: block;
+  padding: 20px 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #89bbff;
+  text-decoration: none;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav a:hover {
+  color: var(--text-orange);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-nav a:last-child {
+  border-bottom: none;
+}
+
+@media (min-width: 768px) {
+  .mobile-nav {
+    display: none;
+  }
+}

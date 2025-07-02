@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Google Drive Upload</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 60px auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px #0001;
+      padding: 32px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #02274f;
+    }
+
+    .status {
+      margin: 16px 0;
+      padding: 10px;
+      border-radius: 5px;
+      display: none;
+    }
+
+    .status.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .status.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .file-input {
+      margin: 20px 0;
+    }
+
+    .btn {
+      background: #f56f51;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 12px 28px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    #progress div {
+      margin: 4px 0;
+      font-size: 14px;
+    }
+
+    .instruction {
+      max-width: 400px;
+      margin: 20px auto 0 auto;
+      padding: 12px 18px;
+      background: #fffbe6;
+      border: 1px solid #ffe58f;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #ad8b00;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Upload File to Google Drive</h2>
+    <div id="status" class="status"></div>
+    <button id="auth-btn" class="btn">Connect Google Drive</button>
+    <button id="signout-btn" class="btn" style="display:none;">Sign Out</button>
+    <button id="choose-account-btn" class="btn" style="display:none;">Choose Google Account</button>
+    <div class="file-input" style="display:none;">
+      <button id="open-file-dialog" class="btn" style="display:none; margin-bottom:10px;">Upload Files</button>
+      <input type="file" id="file-input" multiple style="display:none;" />
+    </div>
+    <div id="progress"></div>
+  </div>
+  <div class="instruction">
+    <b>Localhost Setup:</b> To upload files from your computer to Google Drive, you must:<br>
+    1. Serve this page with a local web server (not file://).<br>
+    2. Place <code>secret.json</code> in the same folder as this HTML.<br>
+    3. Add <code>http://localhost</code> and your port (e.g. <code>http://localhost:8000</code>) to the OAuth client in
+    Google Cloud Console.<br>
+    4. Use the "Connect Google Drive" button, then "Upload Files".<br>
+    <br>
+    <b>Example:</b> <code>python -m http.server 8000</code> then open
+    <code>http://localhost:8000/simple-upload.html</code>
+  </div>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script>
+    let CONFIG = null;
+    fetch('./secret.json')
+      .then(r => r.json())
+      .then(data => { CONFIG = data.web; initGapi(); })
+      .catch(() => showStatus('Could not load secret.json', true));
+
+    const SCOPES = 'https://www.googleapis.com/auth/drive.file';
+    let folderID = null;
+    let isInitialized = false;
+
+    function showStatus(msg, error = false) {
+      const s = document.getElementById('status');
+      s.textContent = msg;
+      s.className = 'status ' + (error ? 'error' : 'success');
+      s.style.display = 'block';
+    }
+
+    function initGapi() {
+      gapi.load('client:auth2', () => {
+        gapi.client.init({
+          clientId: CONFIG.client_id,
+          discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"],
+          scope: SCOPES
+        }).then(() => {
+          const auth = gapi.auth2.getAuthInstance();
+          isInitialized = true;
+          updateUI(auth.isSignedIn.get());
+          auth.isSignedIn.listen(updateUI);
+          document.getElementById('auth-btn').onclick = () => auth.signIn();
+          document.getElementById('signout-btn').onclick = () => auth.signOut();
+          document.getElementById('choose-account-btn').onclick = () => {
+            if (auth) {
+              auth.signIn({ prompt: 'select_account' });
+            }
+          };
+          document.getElementById('file-input').addEventListener('change', handleFile);
+        });
+      });
+    }
+
+    // Ensure Connect button always works, even if gapi loads after DOMContentLoaded
+    document.getElementById('auth-btn').addEventListener('click', function () {
+      if (window.gapi && window.gapi.auth2 && window.gapi.auth2.getAuthInstance) {
+        const auth = gapi.auth2.getAuthInstance();
+        if (auth) {
+          auth.signIn();
+        }
+      }
+    });
+
+    function updateUI(signedIn) {
+      document.getElementById('auth-btn').style.display = signedIn ? 'none' : 'inline-block';
+      document.getElementById('signout-btn').style.display = signedIn ? 'inline-block' : 'none';
+      document.getElementById('choose-account-btn').style.display = signedIn ? 'inline-block' : 'none';
+      document.getElementById('open-file-dialog').style.display = signedIn ? 'inline-block' : 'none';
+      // Hide the file input itself, only show the button
+      document.getElementById('file-input').style.display = 'none';
+      if (signedIn) {
+        showStatus('Connected to Google Drive!');
+        createFolderIfNeeded();
+      } else {
+        showStatus('Please connect to Google Drive to upload files.');
+      }
+    }
+
+    async function createFolderIfNeeded() {
+      try {
+        const resp = await gapi.client.drive.files.list({
+          q: "name='MR_B_Dental_Lab_Cases' and mimeType='application/vnd.google-apps.folder' and trashed=false",
+          fields: 'files(id)'
+        });
+        if (resp.result.files.length > 0) {
+          folderID = resp.result.files[0].id;
+        } else {
+          const folder = await gapi.client.drive.files.create({
+            resource: { name: 'MR_B_Dental_Lab_Cases', mimeType: 'application/vnd.google-apps.folder' }
+          });
+          folderID = folder.result.id;
+        }
+      } catch (e) {
+        showStatus('Could not access Drive folder.', true);
+      }
+    }
+
+    async function handleFile(e) {
+      const files = Array.from(e.target.files);
+      if (!files.length || !folderID) return;
+      document.getElementById('progress').innerHTML = '';
+      for (const file of files) {
+        showStatus('Uploading ' + file.name + ' ...');
+        try {
+          const metadata = { name: new Date().toISOString().split('T')[0] + '_' + file.name, parents: [folderID] };
+          const accessToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
+          const form = new FormData();
+          form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }));
+          form.append('file', file);
+          const res = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,webViewLink', {
+            method: 'POST',
+            headers: new Headers({ 'Authorization': 'Bearer ' + accessToken }),
+            body: form
+          });
+          if (res.ok) {
+            document.getElementById('progress').innerHTML += `<div style='color:green'>✅ Uploaded: ${file.name}</div>`;
+          } else {
+            document.getElementById('progress').innerHTML += `<div style='color:red'>❌ Failed: ${file.name} (Status: ${res.status})</div>`;
+          }
+        } catch (err) {
+          document.getElementById('progress').innerHTML += `<div style='color:red'>❌ Error uploading ${file.name}: ${err.message}</div>`;
+        }
+      }
+      showStatus('Upload finished!', false);
+      document.getElementById('file-input').value = '';
+    }
+
+    // Open file dialog when button is clicked
+    document.getElementById('open-file-dialog').addEventListener('click', function () {
+      document.getElementById('file-input').click();
+    });
+  </script>
+</body>
+
+</html>

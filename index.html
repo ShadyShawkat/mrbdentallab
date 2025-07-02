@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MR. B Dental Lab</title>
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="./styles/index.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="./index.html">
+        <img src="./assets/logo.png" alt="logo">
+      </a>
+    </div>
+    <nav>
+      <div class="mobile-menu-icon" onclick="toggleMobileNav()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 7H15" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M9 12H21" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M3 17H15" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">Service</a>
+        </li>
+        <li>
+          <a href="upload.html">Upload Files</a>
+        </li>
+        <li>
+          <a href="#">Contact Us</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-image-container">
+      <img src="./assets/hero-image.png" alt="Hero Image" class="hero-image">
+    </div>
+    <div class="hero-text">
+      <h1>Dental Lab Services<br>Designed to Cover<br>All Your Needs</h1>
+      <p>MR. B Dental Lab is equipped with all the new technology tools, to handle all your request.</p>
+      <div class="call">
+        <img src="./assets/call.png" alt="call icon">
+        204-869-0066
+      </div>
+      <a class="btn" href="simple-upload.html">UPLOAD A CASE</a>
+      <img src="./assets/hero-end.png" alt="Hero End Image" class="hero-end-image">
+    </div>
+  </section>
+
+  <main>
+    <img src="./assets/thumbnail.png" class="video" alt="Showcase Video" />
+    <h2>Commercial-grade production</h2>
+    <p>
+      At Mr. B Dental Lab, we utilize state-of-the-art technology to deliver consistent,
+      high-quality dental restorations. Our production process is fully digital, ensuring
+      optimal accuracy and fast turnaround times. Whether you're ordering crowns, bridges,
+      or implant-supported solutions, our lab technicians work closely with clinics to ensure
+      every case is handled with precision and care.
+
+      We are proud to support dental professionals with reliable lab services designed to
+      meet the demands of modern dentistry.
+    </p>
+  </main>
+
+  <footer>
+    <div class="info">
+      <img src="./assets/logo.png" alt="MR. B Dental Lab Logo" />
+      <p>info@mrbdentallab.ca</p>
+    </div>
+    <ul class="footer-links">
+      <li>
+        <a href="#">About</a>
+      </li>
+      <li>
+        <a href="#">Service</a>
+      </li>
+      <li>
+        <a href="#">Contact Us</a>
+      </li>
+    </ul>
+    <div class="social-icons">
+      <a href="#">
+        <img src="./assets/footer-x-icon.png" alt="Twitter" />
+      </a>
+      <a href="">
+        <img src="./assets/footer-instagram-icon.png" alt="Instagram" />
+      </a>
+      <a href="">
+        <img src="./assets/footer-facebook-icon.png" alt="Facebook" />
+      </a>
+      <a href="">
+        <img src="./assets/footer-youtube-icon.png" alt="Youtube" />
+      </a>
+    </div>
+  </footer>
+
+  <div class="mobile-nav" id="mobileNav">
+    <div class="close-icon" onclick="toggleMobileNav()">&times;</div>
+    <img src="./assets/logo.png" alt="MR. B Dental Lab Logo" />
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Service</a>
+    <a href="#">Contact Us</a>
+  </div>
+
+  <!-- <section class="hero">
+        <div class="hero-text">
+            <h1>Dental Lab Services Designed to Cover All Your Needs</h1>
+            <p>MR. B Dental Lab is equipped with all the new technology tools, to handle all your request.</p>
+            <div class="call">📞 204-869-0066</div>
+            <button class="btn">UPLOAD A CASE</button>
+        </div>
+    </section>
+
+    <section class="section">
+        <img src="your-machine-video-thumbnail.jpg" class="video" alt="Machine Video" />
+        <h2>Commercial-grade production</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis fermentum lectus. Duis velit sapien...
+        </p>
+        <div class="brands">
+            <img src="logo1.png" alt="Medit">
+            <img src="logo2.png" alt="TRIOS">
+            <img src="logo3.png" alt="DEXIS">
+            <img src="logo4.png" alt="PLANMECA">
+            <img src="logo5.png" alt="iTero">
+            <img src="logo6.png" alt="Primescan">
+            <img src="logo7.png" alt="Carestream">
+            <img src="logo8.png" alt="3DISC">
+        </div>
+    </section>
+
+    <section class="section dark">
+        <img src="your-hand-video-thumbnail.jpg" class="video" alt="Hand Work Video" />
+        <h2>High precision work</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis fermentum lectus. Duis velit sapien...
+        </p>
+    </section>
+
+    <footer>
+        <div class="info">
+            <img src="your-logo.png" alt="MR. B Dental Lab Logo" height="40" />
+            <p>info@mrbdentallab.ca</p>
+        </div>
+        <div class="links">
+            <p>About Us | Services | Contact us</p>
+        </div>
+        <div class="social">
+            <img src="twitter-icon.png" alt="Twitter" />
+            <img src="instagram-icon.png" alt="Instagram" />
+            <img src="facebook-icon.png" alt="Facebook" />
+        </div>
+    </footer> -->
+
+  <script>
+    function toggleMobileNav() {
+      console.log("Toggle mobile navigation");
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('active');
+    }
+  </script>
+</body>
+
+</html>
