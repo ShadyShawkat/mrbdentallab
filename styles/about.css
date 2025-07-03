@@ -4,23 +4,6 @@ h2 {
   color: var(--primary-blue);
 }
 
-main {
-  background-color: white;
-
-  h2 {
-    text-align: center;
-    margin-top: 40px;
-  }
-
-  p {
-    padding: 35px;
-    font-size: 16px;
-    line-height: 190%;
-    font-weight: 400;
-    opacity: 70%;
-  }
-}
-
 .btn {
   display: none;
 }

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MR. B Dental Lab</title>
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="./styles/upload-a-case.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="./index.html">
+        <img src="./assets/logo.png" alt="logo">
+      </a>
+    </div>
+    <nav>
+      <div class="mobile-menu-icon" onclick="toggleMobileNav()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 7H15" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M9 12H21" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M3 17H15" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">Service</a>
+        </li>
+        <li>
+          <a href="#">Contact Us</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div>
+      <label for="dentistName">Dentist's Full Name</label>
+      <input type="text" id="fullName" />
+    </div>
+
+    <div>
+      <label for="practiceName">Practice Name</label>
+      <input type="text" id="practiceName" />
+    </div>
+
+    <div>
+      <label for="phoneNumber">Phone Number</label>
+      <input type="text" id="phoneNumber" />
+    </div>
+
+    <div>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" />
+    </div>
+
+    <div>
+      <label for="street">Street Address</label>
+      <input type="text" id="street" />
+    </div>
+
+    <div>
+      <label for="city">City</label>
+      <input type="text" id="city" />
+    </div>
+
+    <div>
+      <label for="postalCode">Postal Code</label>
+      <input type="text" id="postalCode" />
+    </div>
+
+    <div>
+      <label for="dueDate">Due Date (1 day before appt.)</label>
+      <input type="date" id="dueDate" />
+    </div>
+
+    <div>
+      <label for="patientName">Patient's Full Name</label>
+      <input type="text" id="patientName" />
+    </div>
+
+    <div>
+      <label for="caseType">Case Type</label>
+      <input type="text" id="caseType" />
+    </div>
+
+    <div>
+      <label for="restorationType">Restoration Type</label>
+      <input type="text" id="restorationType" />
+    </div>
+
+    <div>
+      <label for="material">Material Type or Brand name</label>
+      <input type="text" id="material" />
+    </div>
+
+    <div>
+      <label for="dentistName">Dentist's Full Name</label>
+      <input type="text" id="fullName" />
+    </div>
+
+    <div>
+      <label for="shade">Shade required (Vita Classic equiv.)</label>
+      <input type="text" id="shade" />
+    </div>
+
+    <div class="two-column">
+      <label for="instructions">Instructions</label>
+      <textarea id="instructions" rows="6"></textarea>
+    </div>
+
+    <div class="two-column upload">
+      <a href="#">Drag & Drop Files Here</a>
+      <p>or</p>
+      <a href="#">Browse Files</a>
+    </div>
+
+    <div class="two-column submit">
+      <button type="submit" class="btn">Send</button>
+    </div>
+  </main>
+
+  <footer>
+    <div class="info">
+      <img src="./assets/logo.png" alt="MR. B Dental Lab Logo" />
+      <p>info@mrbdentallab.ca</p>
+    </div>
+    <ul class="footer-links footer-mobile">
+      <li>
+        <a href="#">About</a>
+      </li>
+      <li>
+        <a href="#">Service</a>
+      </li>
+      <li>
+        <a href="#">Contact Us</a>
+      </li>
+    </ul>
+    <ul class="footer-links footer-desktop">
+      <ul>
+        <li>
+          About Us
+        </li>
+        <li>
+          <a href="#">Our Story</a>
+        </li>
+        <li>
+          <a href="#">Mr. B Dental Lab Review</a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          Appointments
+        </li>
+        <li>
+          <a href="#">Contact Us</a>
+        </li>
+        <li>
+          <a href="#">Address</a>
+        </li>
+      </ul>
+    </ul>
+    <div class="social-icons">
+      <a href="#">
+        <img src="./assets/footer-x-icon.png" alt="Twitter" />
+      </a>
+      <a href="">
+        <img src="./assets/footer-instagram-icon.png" alt="Instagram" />
+      </a>
+      <a href="">
+        <img src="./assets/footer-facebook-icon.png" alt="Facebook" />
+      </a>
+      <a href="">
+        <img src="./assets/footer-youtube-icon.png" alt="Youtube" />
+      </a>
+    </div>
+  </footer>
+
+  <div class="mobile-nav" id="mobileNav">
+    <div class="close-icon" onclick="toggleMobileNav()">&times;</div>
+    <img src="./assets/logo.png" alt="MR. B Dental Lab Logo" />
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Service</a>
+    <a href="#">Contact Us</a>
+  </div>
+
+  <script>
+    function toggleMobileNav() {
+      console.log("Toggle mobile navigation");
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('active');
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+.btn {
+  display: none;
+}
+
+main {
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  padding: 40px 100px;
+  font-family: 'Rubik', sans-serif;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 20px;
+    gap: 2px;
+  }
+
+  label {
+    font-size: 28px;
+    font-weight: 400;
+    color: #f56f51;
+    line-height: 184%;
+  }
+
+  input,
+  textarea {
+    padding: 20px;
+    border: 1px solid #f56f51;
+    border-radius: 12px;
+    background: #f3f8f9;
+    resize: none;
+  }
+
+  .two-column {
+    grid-column: span 2;
+  }
+
+  .upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 28px;
+    font-weight: 400;
+    color: #f56f51;
+    background: #f3f8f9;
+    border: 1px dotted #f56f51;
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .upload p {
+    margin: 0;
+  }
+
+  .submit {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+  }
+
+  .submit button {
+    padding: 18px 120px;
+  }
+}
+
+/* DESKTOP STYLES */
+@media (min-width: 768px) {
+  .btn {
+    display: inline-block;
+    background: var(--text-orange);
+    color: white;
+    padding: 18px 42px;
+    border-radius: 49px;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn:hover {
+    background-color: #e55a3c;
+  }
+}
