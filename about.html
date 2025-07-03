@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MR. B Dental Lab</title>
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="./styles/about.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="./index.html">
+        <img src="./assets/logo.png" alt="logo">
+      </a>
+    </div>
+    <nav>
+      <div class="mobile-menu-icon" onclick="toggleMobileNav()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 7H15" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M9 12H21" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M3 17H15" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">Service</a>
+        </li>
+        <li>
+          <a href="#">Contact Us</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <img src="./assets/about.png" class="video" alt="Showcase Video" />
+    <h2>Let’s Get to Know each Other</h2>
+    <p>
+      Mr. B Dental Lab is dedicated to providing high-quality, reliable dental restorations to dental professionals
+      across the region. With a strong focus on precision, aesthetics, and advanced technology, we craft crowns,
+      bridges, dentures, and other custom dental solutions that meet the highest standards. Our experienced team is
+      committed to excellent craftsmanship and personalized service, ensuring each case is handled with care and
+      attention to detail. At Mr. B Dental Lab, we value strong partnerships with dental practices, working together to
+      deliver the best results for every patient. Your patients’ smiles are our top priority.
+    </p>
+    <div>
+      <a class="btn" href="simple-upload.html">UPLOAD A CASE</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="info">
+      <img src="./assets/logo.png" alt="MR. B Dental Lab Logo" />
+      <p>info@mrbdentallab.ca</p>
+    </div>
+    <ul class="footer-links footer-mobile">
+      <li>
+        <a href="#">About</a>
+      </li>
+      <li>
+        <a href="#">Service</a>
+      </li>
+      <li>
+        <a href="#">Contact Us</a>
+      </li>
+    </ul>
+    <ul class="footer-links footer-desktop">
+      <ul>
+        <li>
+          About Us
+        </li>
+        <li>
+          <a href="#">Our Story</a>
+        </li>
+        <li>
+          <a href="#">Mr. B Dental Lab Review</a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          Appointments
+        </li>
+        <li>
+          <a href="#">Contact Us</a>
+        </li>
+        <li>
+          <a href="#">Address</a>
+        </li>
+      </ul>
+    </ul>
+    <div class="social-icons">
+      <a href="#">
+        <img src="./assets/footer-x-icon.png" alt="Twitter" />
+      </a>
+      <a href="">
+        <img src="./assets/footer-instagram-icon.png" alt="Instagram" />
+      </a>
+      <a href="">
+        <img src="./assets/footer-facebook-icon.png" alt="Facebook" />
+      </a>
+      <a href="">
+        <img src="./assets/footer-youtube-icon.png" alt="Youtube" />
+      </a>
+    </div>
+  </footer>
+
+  <div class="mobile-nav" id="mobileNav">
+    <div class="close-icon" onclick="toggleMobileNav()">&times;</div>
+    <img src="./assets/logo.png" alt="MR. B Dental Lab Logo" />
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Service</a>
+    <a href="#">Contact Us</a>
+  </div>
+
+  <script>
+    function toggleMobileNav() {
+      console.log("Toggle mobile navigation");
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('active');
+    }
+  </script>
+</body>
+
+</html>
