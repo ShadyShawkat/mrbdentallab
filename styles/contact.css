@@ -1,0 +1,136 @@
+.btn {
+  display: none;
+}
+
+main {
+  background-color: white;
+  display: flex;
+  gap: 50px;
+  padding: 40px;
+
+  .contact-info-section {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 24px;
+    gap: 10px;
+    font-weight: 400;
+    font-family: 'Rubik', sans-serif;
+
+    .contact-info-header {
+      font-size: 28px;
+      line-height: 184%;
+      font-weight: 700;
+
+      span {
+        font-weight: 400;
+        font-size: 24px;
+        display: block;
+      }
+    }
+
+    img {
+      margin-top: 20px;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .contact-form-section {
+    display: none;
+  }
+}
+
+/* DESKTOP STYLES */
+@media (min-width: 768px) {
+  .btn {
+    display: inline-block;
+    background: var(--text-orange);
+    color: white;
+    padding: 18px 42px;
+    border-radius: 49px;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn:hover {
+    background-color: #e55a3c;
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    padding: 50px;
+    .contact-info-section {
+      align-items: flex-start;
+      max-width: 40%;
+
+      section {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: baseline;
+        gap: 10px;
+        max-width: 400px;
+        text-align: left;
+        line-height: 184%;
+      }
+
+      section:nth-child(4) {
+        flex-direction: column;
+      }
+
+      .contact-info-header {
+        span {
+          display: inline;
+          padding-left: 5px;
+        }
+      }
+
+      img {
+        margin-top: 0;
+        width: 480px;
+        height: 446px;
+      }
+    }
+
+    .contact-form-section {
+      display: flex;
+      flex-grow: 1;
+
+      .contact-form {
+        width: 100%;
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 20px;
+        gap: 2px;
+      }
+
+      label {
+        font-size: 28px;
+        font-weight: 400;
+        color: #f56f51;
+        line-height: 184%;
+      }
+
+      input,
+      textarea {
+        padding: 20px;
+        border: 1px solid #f56f51;
+        border-radius: 12px;
+        background: #f3f8f9;
+        resize: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MR. B Dental Lab</title>
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="./styles/contact.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="./index.html">
+        <img src="./assets/logo.png" alt="logo">
+      </a>
+    </div>
+    <nav>
+      <div class="mobile-menu-icon" onclick="toggleMobileNav()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 7H15" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M9 12H21" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M3 17H15" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="./index.html">Home</a>
+        </li>
+        <li>
+          <a href="./about.html">About</a>
+        </li>
+        <li>
+          <a href="#">Service</a>
+        </li>
+        <li>
+          <a href="#">Contact Us</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="contact-info-section">
+      <section>
+        <div class="contact-info-header">Phone:</div>
+        <div>204-663-3335</div>
+      </section>
+      <section>
+        <div class="contact-info-header">Email:</div>
+        <div>info@224dental.ca</div>
+      </section>
+      <section>
+        <div class="contact-info-header">Address: <span>224 Henderson Hwy Winnipeg, MB R2L 1L9</span></div>
+      </section>
+      <section>
+        <div class="contact-info-header">Hours:</div>
+        <p>Monday – Friday: 9 am – 5 pm Saturday: 9 am – 2 pm</p>
+      </section>
+      <img src="./assets/map.png" alt="Map of MR. B Dental Lab Location" class="contact-info-map-image">
+    </section>
+
+    <section class="contact-form-section">
+      <form class="contact-form">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div>
+          <label for="phone">Phone</label>
+          <input type="number" id="phone" name="phone" required>
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn">Send</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="info">
+      <img src="./assets/logo.png" alt="MR. B Dental Lab Logo" />
+      <p>info@mrbdentallab.ca</p>
+    </div>
+    <ul class="footer-links footer-mobile">
+      <li>
+        <a href="./about.html">About</a>
+      </li>
+      <li>
+        <a href="#">Service</a>
+      </li>
+      <li>
+        <a href="#">Contact Us</a>
+      </li>
+    </ul>
+    <ul class="footer-links footer-desktop">
+      <ul>
+        <li>
+          About Us
+        </li>
+        <li>
+          <a href="#">Our Story</a>
+        </li>
+        <li>
+          <a href="#">Mr. B Dental Lab Review</a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          Appointments
+        </li>
+        <li>
+          <a href="#">Contact Us</a>
+        </li>
+        <li>
+          <a href="#">Address</a>
+        </li>
+      </ul>
+    </ul>
+    <div class="social-icons">
+      <a href="#">
+        <img src="./assets/footer-x-icon.png" alt="Twitter" />
+      </a>
+      <a href="">
+        <img src="./assets/footer-instagram-icon.png" alt="Instagram" />
+      </a>
+      <a href="">
+        <img src="./assets/footer-facebook-icon.png" alt="Facebook" />
+      </a>
+      <a href="">
+        <img src="./assets/footer-youtube-icon.png" alt="Youtube" />
+      </a>
+    </div>
+  </footer>
+
+  <div class="mobile-nav" id="mobileNav">
+    <div class="close-icon" onclick="toggleMobileNav()">&times;</div>
+    <img src="./assets/logo.png" alt="MR. B Dental Lab Logo" />
+    <a href="./index.html">Home</a>
+    <a href="./about.html">About</a>
+    <a href="#">Service</a>
+    <a href="#">Contact Us</a>
+  </div>
+
+  <script>
+    function toggleMobileNav() {
+      console.log("Toggle mobile navigation");
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('active');
+    }
+  </script>
+</body>
+
+</html>
